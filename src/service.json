@@ -1,0 +1,6 @@
+{"services":
+	[
+		{"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"}, 
+		{"name":"haircut + shave", "description":"cut and shave", "duration":"35", "price":"13"}
+	]
+}

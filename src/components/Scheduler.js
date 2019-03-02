@@ -3,9 +3,10 @@ import '../App.css';
 import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
 import { fetchTimes } from '../actions/schedulerActions';
+import Services from './Services'
+
 
 class Scheduler extends Component{
-
 
   getTimes = (date) => {
   	let formattedDate = this.formatDate(date)
@@ -28,6 +29,7 @@ class Scheduler extends Component{
 
 		return(
 			<div>
+				<Services/>
 				<Calendar
           onChange={this.getTimes}
           calendarType={"US"}

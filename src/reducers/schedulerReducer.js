@@ -1,14 +1,25 @@
-import { FETCH_TIMES } from '../actions/types';
+import { FETCH_TIMES, FETCH_SERVICES, SELECT_SERVICE } from '../actions/types';
 
 const initialState = {
 	times:[],
-	date: ""
+	date: "",
+	services: [],
+	selectedService:{}
 }
 
 export default function(state= initialState, action){
 	switch(action.type){
+		case FETCH_SERVICES:
+			return {
+				...state,
+				services:action.services
+			}
+		case SELECT_SERVICE:
+			return {
+				...state,
+				selectedService:action.service
+			}
 		case FETCH_TIMES:
-			console.log('schedulerReducer', action.times)
 			return {
 				...state,
 				times: action.times,
