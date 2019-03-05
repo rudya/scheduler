@@ -1,10 +1,11 @@
-import { FETCH_TIMES, FETCH_SERVICES, SELECT_SERVICE } from '../actions/types';
+import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE } from '../actions/types';
 
 const initialState = {
-	times:[],
-	date: "",
 	services: [],
-	selectedService:{}
+	selectedService:{},
+	date: "",
+	times:[],
+	selectedTime: ""
 }
 
 export default function(state= initialState, action){
@@ -24,6 +25,11 @@ export default function(state= initialState, action){
 				...state,
 				times: action.times,
 				date: action.date
+			}
+		case SELECT_TIME:
+			return {
+				...state,
+				selectedTime:action.selectedTime
 			}
 		default:
 			return state;

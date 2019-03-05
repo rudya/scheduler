@@ -2,28 +2,23 @@ import React, { Component } from 'react';
 import '../App.css';
 import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
-import { fetchTimes } from '../actions/schedulerActions';
+import { fetchTimes, selectTime } from '../actions/schedulerActions';
 import Services from './Services'
 
 
 class Scheduler extends Component{
 
-  getTimes = (date) => {
-  	let formattedDate = this.formatDate(date)
+ 	getTimes = (date) => {
+  		let formattedDate = formatDate(date)
 		this.props.fetchTimes(formattedDate);
-  }
+  	}
 
-	formatDate = (date) => {
-		var newDate = [date.getMonth()+1, date.getDate(), date.getFullYear()]
-		newDate = newDate.join('/')
-		return newDate
-	}
 
 	render(){
 
 		const times = this.props.times.map(time => 
 			
-				<li key={time}>{time}</li>
+			<li key={time} onClick={()=>{this.props.selectTime(time)}}>{time}</li>
 			
 		)
 
@@ -31,12 +26,12 @@ class Scheduler extends Component{
 			<div>
 				<Services/>
 				<Calendar
-          onChange={this.getTimes}
-          calendarType={"US"}
-          className={'calendar'}
-          showFixedNumberOfWeeks={false}
-          minDetail={'month'}
-        />
+		          onChange={this.getTimes}
+		          calendarType={"US"}
+		          className={'calendar'}
+		          showFixedNumberOfWeeks={false}
+		          minDetail={'month'}
+		        />
 				<div>
 					{times}
 				</div>
@@ -49,8 +44,15 @@ class Scheduler extends Component{
 
 const mapStateToProps = state => ({
 	times:state.schedulerReducer.times,
-	date:state.schedulerReducer.date
+	date:state.schedulerReducer.date,
+	selectedTime: state.schedulerReducer.selectedTime
 
 })
 
-export default connect(mapStateToProps, { fetchTimes })(Scheduler);
+const formatDate = (date) => {
+	var newDate = [date.getMonth()+1, date.getDate(), date.getFullYear()]
+	newDate = newDate.join('/')
+	return newDate
+}
+
+export default connect(mapStateToProps, { fetchTimes, selectTime })(Scheduler);

@@ -1,4 +1,4 @@
-import { FETCH_TIMES, FETCH_SERVICES, SELECT_SERVICE } from '../actions/types';
+import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE } from '../actions/types';
 import schedulerReducer from './schedulerReducer';
 
 describe('scheduler Reducers', () => {
@@ -6,10 +6,11 @@ describe('scheduler Reducers', () => {
 	it('should return initial state', () => {
 		expect(schedulerReducer(undefined, {})).toEqual(
 			{
-				times:[],
-				date: "",
 				services: [],
-				selectedService:{}
+				selectedService:{},
+				date: "",
+				times:[],
+				selectedTime: ""
 			}
 		)
 	})
@@ -43,14 +44,16 @@ describe('scheduler Reducers', () => {
 				{"name":"haircut + shave", "description":"cut and shave", "duration":"35", "price":"13"}
 			]
 
+		const service = {"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"} 
+
 		const initialState = {
-			times:[],
-			date:"",
 			services: services,
-			selectedService:{}	
+			selectedService:{},	
+			date:"",
+			times:[],
+			selectedTime:""
 		}
 
-		const service = {"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"} 
 
 		expect(
 			schedulerReducer(initialState, {
@@ -58,15 +61,16 @@ describe('scheduler Reducers', () => {
 				service:service
 			})
 			).toEqual({
-				times:[],
-				date:"",
 				services: services,
 				"selectedService":
 					{"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"}, 
+				date:"",
+				times:[],
+				selectedTime:""
 			})
 	})
 
-	it('handle FETCH_TIMES are services were fetched and service was chosen ', () => {
+	it('handle FETCH_TIMES after services were fetched and service was chosen ', () => {
 		const services = 
 			[
 				{"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"}, 
@@ -76,10 +80,11 @@ describe('scheduler Reducers', () => {
 		const service = {"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"} 
 
 		const initialState = {
-			times:[],
-			date:"",
 			services: services,
-			selectedService:service	
+			selectedService:service,	
+			date:"",
+			times:[],
+			selectedTime:""
 		}
 
 		expect(
@@ -90,13 +95,47 @@ describe('scheduler Reducers', () => {
 			})
 			).toEqual(
 				{
-					times:[1,2,3],
-					date:"3/4/2019",
 					services:services,
-					selectedService:service
+					selectedService:service,
+					date:"3/4/2019",
+					times:[1,2,3],
+					selectedTime:""
 				}
 			)
 		
+	})
+
+	it('handle SELECT_TIME after service fetched, chosen and times fetched', () => {
+		const services = 
+			[
+				{"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"}, 
+				{"name":"haircut + shave", "description":"cut and shave", "duration":"35", "price":"13"}
+			]
+
+		const service = {"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"} 
+
+		const initialState = {
+			services: services,
+			selectedService:service,	
+			date:"3/4/19",
+			times:[1,2,3,4],
+			selectedTime:""
+		}
+
+		expect(
+			schedulerReducer(initialState, {
+				type:SELECT_TIME,
+				selectedTime:2
+			})
+		).toEqual(
+			{
+				services:services,
+				selectedService:service,
+				date:"3/4/19",
+				times:[1,2,3,4],
+				selectedTime:2
+			}
+		)
 
 	})
 })
