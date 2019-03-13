@@ -4,6 +4,7 @@ import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
 import { fetchTimes, selectTime } from '../actions/schedulerActions';
 import Services from './Services'
+import SchedulerForm from './SchedulerForm'
 
 
 class Scheduler extends Component{
@@ -11,6 +12,10 @@ class Scheduler extends Component{
  	getTimes = (date) => {
   		let formattedDate = formatDate(date)
 		this.props.fetchTimes(formattedDate);
+  	}
+
+  	submit = (formState) => {
+  		console.log('submit:',formState)
   	}
 
 
@@ -35,6 +40,10 @@ class Scheduler extends Component{
 				<div>
 					{times}
 				</div>
+				<SchedulerForm
+					inputs = {["Name", "Phone Number"]}
+					onClick = {this.submit}
+				/>
 			</div>
 
 		)
