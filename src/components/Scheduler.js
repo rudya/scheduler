@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
-import { fetchTimes, selectTime } from '../actions/schedulerActions';
+import { fetchTimes, selectTime, submit } from '../actions/schedulerActions';
 import Services from './Services'
 import SchedulerForm from './SchedulerForm'
 
@@ -16,6 +16,7 @@ class Scheduler extends Component{
 
   	submit = (formState) => {
   		console.log('submit:',formState)
+  		this.props.submit(formState);
   	}
 
 
@@ -64,4 +65,4 @@ const formatDate = (date) => {
 	return newDate
 }
 
-export default connect(mapStateToProps, { fetchTimes, selectTime })(Scheduler);
+export default connect(mapStateToProps, { fetchTimes, selectTime, submit })(Scheduler);

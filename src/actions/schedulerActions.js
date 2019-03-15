@@ -1,4 +1,4 @@
-import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE } from './types';
+import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE, SUBMIT_FORM } from './types';
 import times from '../times.json'
 import serviceObj from '../service.json'
 
@@ -33,10 +33,18 @@ export function fetchTimes(date){
 
 export function selectTime(time){
 	return function(dispatch){
-		console.log(time)
 		dispatch({
 			type: SELECT_TIME,
 			selectedTime:time
+		})
+	}
+}
+
+export function submit(form){
+	return function(dispatch){
+		dispatch({
+			type:SUBMIT_FORM,
+			form: form
 		})
 	}
 }

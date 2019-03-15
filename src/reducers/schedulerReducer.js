@@ -1,4 +1,4 @@
-import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE } from '../actions/types';
+import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE, SUBMIT_FORM } from '../actions/types';
 
 const initialState = {
 	services: [],
@@ -31,6 +31,9 @@ export default function(state= initialState, action){
 				...state,
 				selectedTime:action.selectedTime
 			}
+		case SUBMIT_FORM:
+			console.log(state, action.form)
+			//fetch send POST
 		default:
 			return state;
 	}
