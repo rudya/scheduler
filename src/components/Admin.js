@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
+import Availability from './Availability';
 import '../App.css';
 
 class App extends Component{
@@ -27,7 +28,8 @@ class App extends Component{
 		          showFixedNumberOfWeeks={false}
 		          minDetail={'month'}
 		          value={this.state.date}
-		        />
+		      />
+		      <Availability />
 			</div>
 		)
 	}
