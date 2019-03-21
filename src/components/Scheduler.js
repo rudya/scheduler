@@ -9,8 +9,16 @@ import SchedulerForm from './SchedulerForm'
 
 class Scheduler extends Component{
 
+	state = {
+		date: new Date(),
+	}
+
  	getTimes = (date) => {
-  		let formattedDate = formatDate(date)
+ 		// set local state date // date format
+ 		this.setState({ date })
+
+ 		//formate date and fetch times
+  		let formattedDate = date.toLocaleDateString("en-US")
 		this.props.fetchTimes(formattedDate);
   	}
 
@@ -37,6 +45,7 @@ class Scheduler extends Component{
 		          className={'calendar'}
 		          showFixedNumberOfWeeks={false}
 		          minDetail={'month'}
+		          value={this.state.date}
 		        />
 				<div>
 					{times}
@@ -59,10 +68,5 @@ const mapStateToProps = state => ({
 
 })
 
-const formatDate = (date) => {
-	var newDate = [date.getMonth()+1, date.getDate(), date.getFullYear()]
-	newDate = newDate.join('/')
-	return newDate
-}
 
 export default connect(mapStateToProps, { fetchTimes, selectTime, submit })(Scheduler);
