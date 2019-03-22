@@ -9,6 +9,7 @@ class SchedulerForm extends Component{
 		const initialState = {}
 		this.props.inputs.map((input) => {
 			initialState[input]=""
+			return initialState
 		})
 		
 		this.state = initialState

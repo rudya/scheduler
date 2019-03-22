@@ -35,17 +35,9 @@ class App extends Component{
 	}
 }
 
-
-const formatDate = (date) => {
-	var newDate = [date.getMonth()+1, date.getDate(), date.getFullYear()]
-	newDate = newDate.join('/')
-	return newDate
-}
-
 const getWeekDates = (dateTime) => {
 
 	let weekDates = []
-	let date = dateTime.getDate()
 	let day = dateTime.getDay()
 
 	//array index controls slice index for previous days of the week

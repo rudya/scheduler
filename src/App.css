@@ -26,4 +26,10 @@ body, html{
   color: white !important;
 }
 
+.service-container{
+	padding: 0.6em;
+	border: 1px solid black;
+	margin-bottom: 1em;
+}
+
 

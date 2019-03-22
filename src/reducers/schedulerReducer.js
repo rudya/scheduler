@@ -34,6 +34,7 @@ export default function(state= initialState, action){
 		case SUBMIT_FORM:
 			console.log(state, action.form)
 			//fetch send POST
+			return {}
 		default:
 			return state;
 	}

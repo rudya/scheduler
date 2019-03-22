@@ -13,6 +13,11 @@ class Scheduler extends Component{
 		date: new Date(),
 	}
 
+	componentDidMount = () => {
+		// after mount, get times for current date 
+		this.getTimes(this.state.date)
+	}
+
  	getTimes = (date) => {
  		// set local state date // date format
  		this.setState({ date })
@@ -36,24 +41,44 @@ class Scheduler extends Component{
 			
 		)
 
-		return(
-			<div>
-				<Services/>
-				<Calendar
-		          onChange={this.getTimes}
-		          calendarType={"US"}
-		          className={'calendar'}
-		          showFixedNumberOfWeeks={false}
-		          minDetail={'month'}
-		          value={this.state.date}
-		        />
+		let calendar = ""
+		let timesContainer = ""
+		if(!isEmpty(this.props.selectedService)){
+		
+			calendar = 
+					<Calendar
+			          onChange={this.getTimes}
+			          calendarType={"US"}
+			          className={'calendar'}
+			          showFixedNumberOfWeeks={false}
+			          minDetail={'month'}
+			          value={this.state.date}
+			        />
+			        console.log(calendar)
+
+			timesContainer = 
 				<div>
 					{times}
 				</div>
+
+		}
+
+		let schedulerForm = ""
+		if(this.props.selectedTime !== ""){
+			schedulerForm = 
 				<SchedulerForm
 					inputs = {["Name", "Phone Number"]}
 					onClick = {this.submit}
 				/>
+		}
+
+
+		return(
+			<div>
+				<Services/>
+				{calendar}
+				{timesContainer}
+				{schedulerForm}
 			</div>
 
 		)
@@ -64,9 +89,17 @@ class Scheduler extends Component{
 const mapStateToProps = state => ({
 	times:state.schedulerReducer.times,
 	date:state.schedulerReducer.date,
-	selectedTime: state.schedulerReducer.selectedTime
+	selectedTime: state.schedulerReducer.selectedTime,
+	selectedService: state.schedulerReducer.selectedService,
 
 })
+
+const isEmpty = obj => {
+	if(Object.keys(obj).length === 0){
+		return true
+	}
+	return false
+}
 
 
 export default connect(mapStateToProps, { fetchTimes, selectTime, submit })(Scheduler);

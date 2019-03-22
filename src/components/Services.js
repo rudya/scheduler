@@ -12,7 +12,7 @@ class Services extends Component{
 	render(){
 		const services = this.props.services.map((service)=>{
 			return (
-				<div key={service.name} onClick={()=>{this.props.selectService(service)}}>
+				<div className="service-container" key={service.name} onClick={()=>{this.props.selectService(service)}}>
 					<div>{service.name}</div>
 					<div>{service.description}</div>
 					<div>{service.duration}min</div>
