@@ -54,7 +54,6 @@ class Scheduler extends Component{
 			          minDetail={'month'}
 			          value={this.state.date}
 			        />
-			        console.log(calendar)
 
 			timesContainer = 
 				<div>
@@ -74,7 +73,7 @@ class Scheduler extends Component{
 
 
 		return(
-			<div>
+			<div id="container">
 				<Services/>
 				{calendar}
 				{timesContainer}

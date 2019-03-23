@@ -2,17 +2,60 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchServices, selectService } from '../actions/schedulerActions';
 import '../App.css';
+import anime from 'animejs/lib/anime.es.js';
+import ServicesMin from './ServicesMin';
 
 class Services extends Component{
 
+	constructor(props){
+		super(props)
+		this.ref = React.createRef()
+		
+	}
+
+	state = {
+		show:true
+	}
+
 	componentDidMount = () => {
 		this.props.fetchServices(1)
+		this.test()
+	}
+
+
+	test = () => {
+
+		this.anim = {
+			leave: anime({
+				targets:this.ref.current,
+				duration:500,
+				easing:'linear',
+				opacity:[0.5,1],
+				complete:()=>{
+					console.log('done')
+
+				}
+			}),
+
+		}
+			
+	}
+
+	click = (e, service) => {
+
+		this.props.selectService(service)
+		this.setState({y:e.clientY})
+		console.log(e.clientY)
+	}
+
+	toggleShow = () => {
+		this.setState({show:!this.state.show})
 	}
 
 	render(){
 		const services = this.props.services.map((service)=>{
 			return (
-				<div className="service-container" key={service.name} onClick={()=>{this.props.selectService(service)}}>
+				<div className="service-container" key={service.name} onClick={(e) => this.click(e, service)}>
 					<div>{service.name}</div>
 					<div>{service.description}</div>
 					<div>{service.duration}min</div>
@@ -21,12 +64,17 @@ class Services extends Component{
 				</div>
 			)	
 		})
-		return(
-			<div> 
-				{services} 
-			</div>
 
-		)
+		if(isEmpty(this.props.selectedService)){
+
+			return(
+				<div ref={this.ref} id="services"> 
+					{services} 
+				</div>
+			)
+		}
+		return(<ServicesMin selectedService={this.props.selectedService} y={this.state.y}/>)
+		
 	}
 }
 
@@ -35,5 +83,12 @@ const mapStateToProps = state => ({
 	selectedService:state.schedulerReducer.selectedService
 
 })
+
+const isEmpty = obj => {
+	if(Object.keys(obj).length === 0){
+		return true
+	}
+	return false
+}
 
 export default connect(mapStateToProps, { fetchServices, selectService })(Services);

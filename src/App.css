@@ -6,12 +6,15 @@
 body, html{
   width: 100%;
   height: 100%;
-  background-color: lightblue;
+  overflow-x: hidden;
 }
 
 .calendar{
   width: 100% !important;
+}
 
+.react-calendar{
+  border:0px !important;
 }
 
 .react-calendar__month-view__days__day--weekend{
@@ -30,6 +33,19 @@ body, html{
 	padding: 0.6em;
 	border: 1px solid black;
 	margin-bottom: 1em;
+}
+
+#services{
+  position: absolute;
+  width: 100%;
+  min-height: auto;
+  overflow: hidden;
+  width: 99%;
+  margin-left: 0.5%;
+}
+
+#services-min{
+  padding: 0.6em;
 }
 
 

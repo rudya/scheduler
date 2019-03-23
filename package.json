@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animejs": "^3.0.1",
     "install": "^0.12.2",
     "react": "^16.8.1",
     "react-calendar": "^2.18.1",
