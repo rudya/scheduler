@@ -12,16 +12,15 @@ class ServicesMin extends Component{
 	}
 
 	componentDidMount = () => {
-		console.log(this.props.y)
-		this.test(this.props.y)
+		console.log(this.props.clientY)
+		this.anim(this.props.clientY)
 	}
 
-	test = (y) => {
+	anim = (y) => {
 
-		this.anim = {
-			leave: anime({
+		const anim = anime({
 				targets:this.ref.current,
-				duration:300,
+				duration:500,
 				easing:'linear',
 				translateY:y,
 				direction:'reverse',
@@ -29,9 +28,7 @@ class ServicesMin extends Component{
 					console.log('done')
 
 				}
-			}),
-
-		}
+			})
 			
 	}
 

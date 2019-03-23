@@ -44,8 +44,7 @@ class Services extends Component{
 	click = (e, service) => {
 
 		this.props.selectService(service)
-		this.setState({y:e.clientY})
-		console.log(e.clientY)
+		this.setState({clientY:e.clientY})
 	}
 
 	toggleShow = () => {
@@ -73,7 +72,7 @@ class Services extends Component{
 				</div>
 			)
 		}
-		return(<ServicesMin selectedService={this.props.selectedService} y={this.state.y}/>)
+		return(<ServicesMin selectedService={this.props.selectedService} clientY={this.state.clientY}/>)
 		
 	}
 }
