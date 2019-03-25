@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectService } from '../actions/schedulerActions';
-import anime from 'animejs/lib/anime.es.js';
 import '../App.css';
+const anime = require('animejs/lib/anime.js');
 
 class ServicesMin extends Component{
 

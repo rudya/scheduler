@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchServices, selectService } from '../actions/schedulerActions';
 import '../App.css';
-import anime from 'animejs/lib/anime.es.js';
 import ServicesMin from './ServicesMin';
+const anime = require('animejs/lib/anime.js');
 
 class Services extends Component{
 

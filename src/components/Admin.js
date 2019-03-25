@@ -37,6 +37,8 @@ class App extends Component{
 
 const getWeekDates = (dateTime) => {
 
+	console.log(dateTime)
+
 	let weekDates = []
 	let day = dateTime.getDay()
 
