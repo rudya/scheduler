@@ -3,7 +3,7 @@ import Calendar from 'react-calendar';
 import Availability from './Availability';
 import '../App.css';
 
-class App extends Component{
+class Admin extends Component{
 
 	state = {
 		date: new Date(),
@@ -35,7 +35,7 @@ class App extends Component{
 	}
 }
 
-const getWeekDates = (dateTime) => {
+export const getWeekDates = (dateTime) => {
 
 	console.log(dateTime)
 
@@ -68,4 +68,4 @@ const getWeekDates = (dateTime) => {
 
 }
 
-export default App;
+export default Admin;
