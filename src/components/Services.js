@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { fetchServices, selectService } from '../actions/schedulerActions';
 import '../App.css';
 import ServicesMin from './ServicesMin';
-const anime = require('animejs/lib/anime.js');
 
 class Services extends Component{
 
@@ -19,26 +18,6 @@ class Services extends Component{
 
 	componentDidMount = () => {
 		this.props.fetchServices(1)
-		this.test()
-	}
-
-
-	test = () => {
-
-		this.anim = {
-			leave: anime({
-				targets:this.ref.current,
-				duration:500,
-				easing:'linear',
-				opacity:[0.5,1],
-				complete:()=>{
-					console.log('done')
-
-				}
-			}),
-
-		}
-			
 	}
 
 	click = (e, service) => {
@@ -72,7 +51,7 @@ class Services extends Component{
 				</div>
 			)
 		}
-		return(<ServicesMin selectedService={this.props.selectedService} clientY={this.state.clientY}/>)
+		return(<ServicesMin clientY={this.state.clientY}/>)
 		
 	}
 }

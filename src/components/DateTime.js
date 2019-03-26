@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
-import { fetchTimes, selectTime, submit } from '../actions/schedulerActions';
+import { fetchTimes, selectTime } from '../actions/schedulerActions';
 import '../App.css';
+import DateTimeMin from './DateTimeMin';
 
 class DateTime extends Component{
 
+	state = {
+		date: new Date(),
+	}
+
+ 	getTimes = (date) => {
+ 		// set local state date // date format
+ 		this.setState({ date })
+
+ 		//formate date and fetch times
+  		let formattedDate = date.toLocaleDateString("en-US")
+		this.props.fetchTimes(formattedDate);
+  	}
+
+  	onActiveDateChange = () => {
+  		console.log('month change')
+  		//set date to null
+  		//get rid of times
+  	}
 
 	render(){
 
@@ -26,6 +45,8 @@ class DateTime extends Component{
 			          className={'calendar'}
 			          showFixedNumberOfWeeks={false}
 			          minDetail={'month'}
+			          value={this.state.date}
+			          onActiveDateChange = {this.onActiveDateChange}
 			        />
 
 			timesContainer = 
@@ -33,6 +54,12 @@ class DateTime extends Component{
 					{times}
 				</div>
 
+		}
+
+		if(this.props.selectedTime){
+			return(
+				<DateTimeMin clientY="50"/>
+				)
 		}
 
 		return(
@@ -46,7 +73,7 @@ class DateTime extends Component{
 
 const mapStateToProps = state => ({
 	times:state.schedulerReducer.times,
-	date:state.schedulerReducer.date,
+	//date:state.schedulerReducer.date,
 	selectedTime: state.schedulerReducer.selectedTime,
 	selectedService: state.schedulerReducer.selectedService,
 
@@ -59,4 +86,4 @@ const isEmpty = obj => {
 	return false
 }
 
-export default connect(mapStateToProps, { fetchTimes, selectTime, submit })(DateTime);
+export default connect(mapStateToProps, { fetchTimes, selectTime })(DateTime);
