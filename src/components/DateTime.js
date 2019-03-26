@@ -1,37 +1,10 @@
 import React, { Component } from 'react';
-import '../App.css';
 import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
 import { fetchTimes, selectTime, submit } from '../actions/schedulerActions';
-import Services from './Services'
-import DateTime from './DateTime'
-import SchedulerForm from './SchedulerForm'
+import '../App.css';
 
-
-class Scheduler extends Component{
-
-	state = {
-		date: new Date(),
-	}
-
-	componentDidMount = () => {
-		// after mount, get times for current date 
-		this.getTimes(this.state.date)
-	}
-
- 	getTimes = (date) => {
- 		// set local state date // date format
- 		this.setState({ date })
-
- 		//formate date and fetch times
-  		let formattedDate = date.toLocaleDateString("en-US")
-		this.props.fetchTimes(formattedDate);
-  	}
-
-  	submit = (formState) => {
-  		console.log('submit:',formState)
-  		this.props.submit(formState);
-  	}
+class DateTime extends Component{
 
 
 	render(){
@@ -53,7 +26,6 @@ class Scheduler extends Component{
 			          className={'calendar'}
 			          showFixedNumberOfWeeks={false}
 			          minDetail={'month'}
-			          value={this.state.date}
 			        />
 
 			timesContainer = 
@@ -63,26 +35,13 @@ class Scheduler extends Component{
 
 		}
 
-		let schedulerForm = ""
-		if(this.props.selectedTime !== ""){
-			schedulerForm = 
-				<SchedulerForm
-					inputs = {["Name", "Phone Number"]}
-					onClick = {this.submit}
-				/>
-		}
-
-
 		return(
-			<div id="container">
-				<Services/>
-				<DateTime />
-				{schedulerForm}
+			<div>
+			{calendar}
+			{timesContainer}
 			</div>
-
-		)
+			)
 	}
-
 }
 
 const mapStateToProps = state => ({
@@ -100,5 +59,4 @@ const isEmpty = obj => {
 	return false
 }
 
-
-export default connect(mapStateToProps, { fetchTimes, selectTime, submit })(Scheduler);
+export default connect(mapStateToProps, { fetchTimes, selectTime, submit })(DateTime);

@@ -9,8 +9,8 @@ class App extends Component {
   render() {
     return (
     	<Provider store={store}>
-	     {/*<Scheduler />*/}
-	     <Admin />
+	     <Scheduler />
+	     {/*<Admin />*/}
 	     </Provider>
     );
   }
