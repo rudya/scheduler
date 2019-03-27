@@ -15,6 +15,13 @@ body, html{
   background-image: radial-gradient( #FFFFFF, #f3f3f3);
 }
 
+.sm{
+  font-size: 1em;
+}
+
+.med{
+  font-size: 1.6em;
+}
 
 .calendar{
   width: 100% !important;
@@ -42,16 +49,18 @@ body, html{
 
 .service-container{
   width: 85%;
-  position: left;
   left: 0;
   right: 0;
   margin: auto;
 	padding: 0.6em;
 	margin-bottom: 1.6em;
   background-color: white;
-  -webkit-box-shadow: 0px 10px 68px -20px rgba(0,0,0,0.3);
-  -moz-box-shadow: 0px 10px 68px -20px rgba(0,0,0,0.3);
-  box-shadow: 0px 10px 68px -20px rgba(0,0,0,0.3);
+
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: auto auto;
+  align-items: center;
+  vertical-align: middle;
 }
 
 #services{
@@ -62,7 +71,32 @@ body, html{
 }
 
 #services-min{
-  padding: 0.6em;
+  padding: 7%;
+  display: grid;
+  grid-template-columns: auto 1em;
+  cursor: pointer;
 }
 
+.back-img{
+  width: 0.6em;
+  height: auto;
+  opacity: 0.3;
+  align-self: center;
+  justify-self:right;
+}
+
+.service-name{
+  color: #006edc;
+}
+
+
+.grey{
+  color: grey;
+}
+
+.shadow{
+  -webkit-box-shadow: 0px 10px 68px -20px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 10px 68px -20px rgba(0,0,0,0.3);
+  box-shadow: 0px 10px 68px -20px rgba(0,0,0,0.3);
+}
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectService } from '../actions/schedulerActions';
 import '../App.css';
+import next from '../images/next.svg';
 const anime = require('animejs/lib/anime.js');
 
 class ServicesMin extends Component{
@@ -34,9 +35,9 @@ class ServicesMin extends Component{
 
 	render(){
 		return(
-			<div id="services-min" ref={this.ref}>
+			<div id="services-min" className="service-name med" ref={this.ref} onClick={() => {this.props.selectService({})}}>
 				{this.props.selectedService.name}
-				<button onClick={() => {this.props.selectService({})}}>back</button>
+				<img className="back-img" src={next} ></img>
 			</div>
 		)
 	}

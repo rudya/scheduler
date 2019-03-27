@@ -17,26 +17,26 @@ class SchedulerForm extends Component{
 	}
 
 	handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})
-  }
+    	this.setState({[event.target.name]: event.target.value})
+	}
 
-  handleSubmit = () => {
-  	let isFilled = true
+	handleSubmit = () => {
+		let isFilled = true
 
-  	Object.keys(this.state).forEach((input) => {
-  			
-  		if(this.state[input] === ""){
-  			isFilled = false
-  		}
-  	})
+		Object.keys(this.state).forEach((input) => {
+				
+			if(this.state[input] === ""){
+				isFilled = false
+			}
+		})
 
-  	if(isFilled){
-	  	this.props.onClick(this.state)
-  	}
-  	else{
-  		console.log("fill out all fields")
-  	}
-  }
+		if(isFilled){
+			this.props.onClick(this.state)
+		}
+		else{
+			console.log("fill out all fields")
+		}
+	}
 
 	render(){
 		let inputs = this.props.inputs.map((input) => {

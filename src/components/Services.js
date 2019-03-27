@@ -33,11 +33,10 @@ class Services extends Component{
 	render(){
 		const services = this.props.services.map((service)=>{
 			return (
-				<div className="service-container" key={service.name} onClick={(e) => this.click(e, service)}>
-					<div>{service.name}</div>
-					<div>{service.description}</div>
-					<div>{service.duration}min</div>
-					<div>${service.price}</div>
+				<div className="service-container shadow" key={service.name} onClick={(e) => this.click(e, service)}>
+					<div><span className="service-name med">{service.name}</span></div>
+					<div><span className="grey">{service.duration}min</span></div>
+					<div>${service.price}<span className="grey">  {service.description}</span></div>
 
 				</div>
 			)	

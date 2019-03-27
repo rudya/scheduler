@@ -11,6 +11,10 @@ class DateTime extends Component{
 		date: new Date(),
 	}
 
+	componentDidMount=()=>{
+		console.log('mounted')
+	}
+
  	getTimes = (date) => {
  		// set local state date // date format
  		this.setState({ date })
