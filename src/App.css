@@ -70,7 +70,11 @@ body, html{
   overflow: hidden;
 }
 
-#services-min{
+.text-right{
+  text-align: right;
+}
+
+.min{
   padding: 7%;
   display: grid;
   grid-template-columns: auto 1em;
@@ -85,10 +89,9 @@ body, html{
   justify-self:right;
 }
 
-.service-name{
+.blue{
   color: #006edc;
 }
-
 
 .grey{
   color: grey;
@@ -98,5 +101,10 @@ body, html{
   -webkit-box-shadow: 0px 10px 68px -20px rgba(0,0,0,0.3);
   -moz-box-shadow: 0px 10px 68px -20px rgba(0,0,0,0.3);
   box-shadow: 0px 10px 68px -20px rgba(0,0,0,0.3);
+}
+
+#date-time-min{
+  padding: 7%;
+  cursor: pointer;
 }
 

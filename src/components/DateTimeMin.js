@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectTime, setStage } from '../actions/schedulerActions';
 import '../App.css';
+import next from '../images/next.svg';
 const anime = require('animejs/lib/anime.js');
 
 class DateTimeMin extends Component{
@@ -39,9 +40,9 @@ class DateTimeMin extends Component{
 
 	render(){
 		return(
-			<div id="date-time-min" ref={this.ref}>
+			<div id="date-time-min" className="blue med min" ref={this.ref} onClick={this.unminify}>
 				{this.props.date} @ {this.props.selectedTime}
-				<button onClick={this.unminify}>back</button>
+				<img className="back-img" src={next} alt="back"></img>
 			</div>
 		)
 	}

@@ -35,8 +35,8 @@ class Services extends Component{
 		const services = this.props.services.map((service)=>{
 			return (
 				<div className="service-container shadow" key={service.name} onClick={(e) => this.click(e, service)}>
-					<div><span className="service-name med">{service.name}</span></div>
-					<div><span className="grey">{service.duration}min</span></div>
+					<div><span className="blue med">{service.name}</span></div>
+					<div className="text-right"><span className="grey" >{service.duration}min</span></div>
 					<div>${service.price}<span className="grey">  {service.description}</span></div>
 
 				</div>

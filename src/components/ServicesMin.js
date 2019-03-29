@@ -40,7 +40,7 @@ class ServicesMin extends Component{
 
 	render(){
 		return(
-			<div id="services-min" className="service-name med" ref={this.ref} onClick={this.unminify}>
+			<div id="services-min" className="blue med min" ref={this.ref} onClick={this.unminify}>
 				{this.props.selectedService.name}
 				<img className="back-img" src={next} alt="back"></img>
 			</div>
