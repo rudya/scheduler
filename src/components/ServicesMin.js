@@ -13,7 +13,6 @@ class ServicesMin extends Component{
 	}
 
 	componentDidMount = () => {
-		console.log(this.props.clientY)
 		this.anim(this.props.clientY)
 	}
 
@@ -25,10 +24,6 @@ class ServicesMin extends Component{
 				easing:'linear',
 				translateY:y,
 				direction:'reverse',
-				complete:()=>{
-					console.log('done')
-
-				}
 			})
 			
 	}

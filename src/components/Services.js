@@ -3,14 +3,10 @@ import { connect } from 'react-redux';
 import { fetchServices, selectService, setStage } from '../actions/schedulerActions';
 import '../App.css';
 import ServicesMin from './ServicesMin';
+import Service from './Service';
+
 
 class Services extends Component{
-
-	constructor(props){
-		super(props)
-		this.ref = React.createRef()
-		
-	}
 
 	state = {
 		show:true
@@ -27,19 +23,12 @@ class Services extends Component{
 		this.setState({clientY:e.clientY})
 	}
 
-	toggleShow = () => {
-		this.setState({show:!this.state.show})
-	}
 
 	render(){
-		const services = this.props.services.map((service)=>{
-			return (
-				<div className="service-container shadow" key={service.name} onClick={(e) => this.click(e, service)}>
-					<div><span className="blue med">{service.name}</span></div>
-					<div className="text-right"><span className="grey" >{service.duration}min</span></div>
-					<div>${service.price}<span className="grey">  {service.description}</span></div>
+		const services = this.props.services.map((service, i)=>{
 
-				</div>
+			return (
+				<Service service={service} key={i} duration = {500 + (i*50)}/>
 			)	
 		})
 
