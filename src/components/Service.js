@@ -16,11 +16,11 @@ class Service extends Component{
 
 	}
 
-	click = (e, service) => {
+	selectService = (e, service) => {
 
 		this.props.selectService(service)
 		this.props.setStage(2)
-		this.setState({clientY:e.clientY})
+		this.props.click(e.clientY)
 	}
 
 
@@ -41,7 +41,7 @@ class Service extends Component{
 
 	render(){
 		return(
-			<div className="service-container shadow" key={this.props.i} onClick={(e) => this.click(e, this.props.service)} ref={this.ref}>
+			<div className="service-container shadow" key={this.props.i} onClick={(e) => this.selectService(e, this.props.service)} ref={this.ref}>
 				<div><span className="blue med">{this.props.service.name}</span></div>
 				<div className="text-right"><span className="grey" >{this.props.service.duration}min</span></div>
 				<div>${this.props.service.price}<span className="grey">  {this.props.service.description}</span></div>

@@ -19,17 +19,16 @@ class DateTimeMin extends Component{
 
 	anim = (y) => {
 
-		const anim = anime({
-				targets:this.ref.current,
-				duration:500,
-				easing:'linear',
-				translateY:y,
-				direction:'reverse',
-				complete:()=>{
-					console.log('done')
-
-				}
-			})
+		anime({
+			targets:this.ref.current,
+			duration:500,
+			easing:'linear',
+			translateY:y,
+			direction:'reverse',
+			complete:()=>{
+				console.log('done')
+			}
+		})
 			
 	}
 

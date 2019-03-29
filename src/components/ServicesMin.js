@@ -18,14 +18,14 @@ class ServicesMin extends Component{
 
 	anim = (y) => {
 
-		const anim = anime({
-				targets:this.ref.current,
-				duration:500,
-				easing:'linear',
-				translateY:y,
-				direction:'reverse',
-			})
-			
+		anime({
+			targets:this.ref.current,
+			duration:500,
+			easing:'easeInOutCirc',
+			translateY:y,
+			direction:'reverse',
+		})
+		
 	}
 
 	unminify = () => {
@@ -35,9 +35,10 @@ class ServicesMin extends Component{
 
 	render(){
 		return(
-			<div id="services-min" className="blue med min" ref={this.ref} onClick={this.unminify}>
-				{this.props.selectedService.name}
-				<img className="back-img" src={next} alt="back"></img>
+			<div id="services-min" className="service-container shadow " ref={this.ref} onClick={this.unminify}>
+				<div><span className="blue med">{this.props.selectedService.name}</span></div>
+				<div className="text-right"><span className="grey" >{this.props.selectedService.duration}min</span></div>
+				<div>${this.props.selectedService.price}<span className="grey">  {this.props.selectedService.description}</span></div>
 			</div>
 		)
 	}

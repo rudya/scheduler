@@ -52,7 +52,6 @@ class Scheduler extends Component{
 				<DateTime />
 				{schedulerForm}
 			</div>
-
 		)
 	}
 

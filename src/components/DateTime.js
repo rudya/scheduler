@@ -4,8 +4,14 @@ import { connect } from 'react-redux';
 import { fetchTimes, selectTime, setStage } from '../actions/schedulerActions';
 import '../App.css';
 import DateTimeMin from './DateTimeMin';
+const anime = require('animejs/lib/anime.js');
 
 class DateTime extends Component{
+
+	constructor(props){
+		super(props)
+		this.ref = React.createRef()
+	}
 
 	state = {
 		date: new Date(),
@@ -35,6 +41,23 @@ class DateTime extends Component{
   		this.props.setStage(3)
   	}
 
+  	anim = () => {
+
+		anime({
+			targets:this.ref.current,
+			duration:500,
+			easing:'linear',
+			translateY:200,
+			direction:'reverse',
+			autoplay:false,
+			complete:()=>{
+				console.log('done')
+
+			}
+		})
+			
+	}
+
 	render(){
 
 		const times = this.props.times.map(time => 
@@ -59,7 +82,7 @@ class DateTime extends Component{
 			        />
 
 			timesContainer = 
-				<div>
+				<div id="times">
 					{times}
 				</div>
 
@@ -72,7 +95,7 @@ class DateTime extends Component{
 		}
 
 		return(
-			<div>
+			<div id="date-time">
 			{calendar}
 			{timesContainer}
 			</div>

@@ -1,6 +1,10 @@
 {"services":
 	[
-		{"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"}, 
-		{"name":"haircut + shave", "description":"cut and shave", "duration":"35", "price":"13"}
+		{"name":"haircut", "description":"good ol haircut good ol haircut good ol haircut good ol haircut", "duration":"30", "price":"10"}, 
+		{"name":"haircut + shave", "description":"cut and shave good ol haircut good ol haircut good ol haircut", "duration":"35", "price":"13"},
+		{"name":"haircut", "description":"good ol haircut good ol haircut good ol haircut", "duration":"30", "price":"10"}, 
+		{"name":"haircut + shave", "description":"cut and shave good ol haircut good ol haircut good ol haircut", "duration":"35", "price":"13"},
+		{"name":"haircut", "description":"good ol haircut good ol haircut good ol haircut", "duration":"30", "price":"10"}, 
+		{"name":"haircut + shave", "description":"cut and shave good ol haircut good ol haircut good ol haircut", "duration":"35", "price":"13"}
 	]
 }
