@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setStage } from '../actions/schedulerActions';
+import { selectService ,setStage } from '../actions/schedulerActions';
 import '../App.css';
 import next from '../images/next.svg';
 const anime = require('animejs/lib/anime.js');
@@ -33,9 +33,14 @@ class ServicesMin extends Component{
 			
 	}
 
+	unminify = () => {
+		this.props.selectService({})
+		this.props.setStage(1)
+	}
+
 	render(){
 		return(
-			<div id="services-min" className="service-name med" ref={this.ref} onClick={() => {this.props.setStage(1)}}>
+			<div id="services-min" className="service-name med" ref={this.ref} onClick={this.unminify}>
 				{this.props.selectedService.name}
 				<img className="back-img" src={next} alt="back"></img>
 			</div>
@@ -49,5 +54,5 @@ const mapStateToProps = state => ({
 
 })
 
-export default connect(mapStateToProps, { setStage })(ServicesMin);
+export default connect(mapStateToProps, { selectService ,setStage })(ServicesMin);
 

@@ -32,11 +32,16 @@ class DateTimeMin extends Component{
 			
 	}
 
+	unminify = () => {
+		this.props.selectTime("")
+		this.props.setStage(2)
+	}
+
 	render(){
 		return(
 			<div id="date-time-min" ref={this.ref}>
 				{this.props.date} @ {this.props.selectedTime}
-				<button onClick={() => {this.props.setStage(2)}}>back</button>
+				<button onClick={this.unminify}>back</button>
 			</div>
 		)
 	}

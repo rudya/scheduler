@@ -37,11 +37,23 @@ export default function(state= initialState, action){
 			//fetch send POST
 			return state
 		case SET_STAGE:
+			let stage = action.stage
+			// jump to stage 3 if service and time are already selected
+			if(!isEmpty(state.selectedService) && state.selectedTime !== ""){
+				stage = 3
+			}
 			return {
 				...state,
-				stage:action.stage
+				stage:stage
 			}
 		default:
 			return state;
 	}
+}
+
+const isEmpty = obj => {
+	if(Object.keys(obj).length === 0){
+		return true
+	}
+	return false
 }
