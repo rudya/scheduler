@@ -1,4 +1,4 @@
-import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE, SUBMIT_FORM } from './types';
+import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE, SUBMIT_FORM, SET_STAGE } from './types';
 import times from '../times.json'
 import serviceObj from '../service.json'
 
@@ -45,6 +45,15 @@ export function submit(form){
 		dispatch({
 			type:SUBMIT_FORM,
 			form: form
+		})
+	}
+}
+
+export function setStage(stage){
+	return function(dispatch){
+		dispatch({
+			type:SET_STAGE,
+			stage:stage
 		})
 	}
 }

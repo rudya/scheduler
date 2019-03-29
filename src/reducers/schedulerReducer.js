@@ -1,11 +1,12 @@
-import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE, SUBMIT_FORM } from '../actions/types';
+import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE, SUBMIT_FORM, SET_STAGE } from '../actions/types';
 
 const initialState = {
 	services: [],
 	selectedService:{},
 	date: "",
 	times:[],
-	selectedTime: ""
+	selectedTime: "",
+	stage:1
 }
 
 export default function(state= initialState, action){
@@ -35,6 +36,11 @@ export default function(state= initialState, action){
 			console.log(state, action.form)
 			//fetch send POST
 			return state
+		case SET_STAGE:
+			return {
+				...state,
+				stage:action.stage
+			}
 		default:
 			return state;
 	}

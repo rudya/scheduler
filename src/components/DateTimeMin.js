@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectTime } from '../actions/schedulerActions';
+import { selectTime, setStage } from '../actions/schedulerActions';
 import '../App.css';
 const anime = require('animejs/lib/anime.js');
 
@@ -36,7 +36,7 @@ class DateTimeMin extends Component{
 		return(
 			<div id="date-time-min" ref={this.ref}>
 				{this.props.date} @ {this.props.selectedTime}
-				<button onClick={() => {this.props.selectTime("")}}>back</button>
+				<button onClick={() => {this.props.setStage(2)}}>back</button>
 			</div>
 		)
 	}
@@ -48,5 +48,5 @@ const mapStateToProps = state => ({
 
 })
 
-export default connect(mapStateToProps, { selectTime })(DateTimeMin);
+export default connect(mapStateToProps, { selectTime, setStage })(DateTimeMin);
 

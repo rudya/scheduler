@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchServices, selectService } from '../actions/schedulerActions';
+import { fetchServices, selectService, setStage } from '../actions/schedulerActions';
 import '../App.css';
 import ServicesMin from './ServicesMin';
 
@@ -23,6 +23,7 @@ class Services extends Component{
 	click = (e, service) => {
 
 		this.props.selectService(service)
+		this.props.setStage(2)
 		this.setState({clientY:e.clientY})
 	}
 
@@ -42,7 +43,7 @@ class Services extends Component{
 			)	
 		})
 
-		if(isEmpty(this.props.selectedService)){
+		if(this.props.stage === 1){
 
 			return(
 				<div ref={this.ref} id="services"> 
@@ -57,15 +58,9 @@ class Services extends Component{
 
 const mapStateToProps = state => ({
 	services:state.schedulerReducer.services,
-	selectedService:state.schedulerReducer.selectedService
+	selectedService:state.schedulerReducer.selectedService,
+	stage:state.schedulerReducer.stage
 
 })
 
-const isEmpty = obj => {
-	if(Object.keys(obj).length === 0){
-		return true
-	}
-	return false
-}
-
-export default connect(mapStateToProps, { fetchServices, selectService })(Services);
+export default connect(mapStateToProps, { fetchServices, selectService, setStage })(Services);
