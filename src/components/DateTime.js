@@ -30,10 +30,8 @@ class DateTime extends Component{
 		this.props.fetchTimes(formattedDate);
   	}
 
-  	onActiveDateChange = () => {
-  		console.log('month change')
-  		//set date to null
-  		//get rid of times
+  	onActiveDateChange = (values) => {
+  		this.getTimes(values.activeStartDate)
   	}
 
   	selectTime = (time) => {
@@ -105,7 +103,7 @@ class DateTime extends Component{
 
 const mapStateToProps = state => ({
 	times:state.schedulerReducer.times,
-	//date:state.schedulerReducer.date,
+	date:state.schedulerReducer.date,
 	selectedTime: state.schedulerReducer.selectedTime,
 	selectedService: state.schedulerReducer.selectedService,
 	stage: state.schedulerReducer.stage
