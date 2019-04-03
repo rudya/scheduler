@@ -1,4 +1,4 @@
-import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE } from '../actions/types';
+import { FETCH_TIMES, SELECT_TIME, FETCH_SERVICES, SELECT_SERVICE, SET_STAGE } from '../actions/types';
 import schedulerReducer from './schedulerReducer';
 
 describe('scheduler Reducers', () => {
@@ -10,7 +10,8 @@ describe('scheduler Reducers', () => {
 				selectedService:{},
 				date: "",
 				times:[],
-				selectedTime: ""
+				selectedTime: "",
+				stage:1
 			}
 		)
 	})
@@ -137,6 +138,73 @@ describe('scheduler Reducers', () => {
 			}
 		)
 
+	})
+
+	it('stage 1 -> 2', () => {
+
+		const services = 
+			[
+				{"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"}, 
+				{"name":"haircut + shave", "description":"cut and shave", "duration":"35", "price":"13"}
+			]
+
+		const service = {"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"} 
+
+		const initialState = {
+			services: services,
+			selectedService:service,	
+			date:"",
+			times:[],
+			selectedTime:""
+		}
+
+		expect(schedulerReducer(initialState,{
+			type:SET_STAGE,
+			stage:2
+		})).toEqual({
+				services: services,
+				selectedService: service, 
+				date:"",
+				times:[],
+				selectedTime:"",
+				stage:2
+			})
+	})
+
+	it('stage 1[select service] -> 3[form fill]', () => {
+
+		const services = 
+			[
+				{"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"}, 
+				{"name":"haircut + shave", "description":"cut and shave", "duration":"35", "price":"13"}
+			]
+
+		const service = {"name":"haircut", "description":"good ol haircut", "duration":"30", "price":"10"} 
+
+		const initialState = {
+			services: services,
+			selectedService:service,	
+			date:"3/4/19",
+			times:[1,2,3,4],
+			selectedTime:2,
+			stage:1
+		}
+
+		expect(
+			schedulerReducer(initialState, {
+				type:SET_STAGE,
+				stage:2
+			})
+		).toEqual(
+			{
+				services:services,
+				selectedService:service,
+				date:"3/4/19",
+				times:[1,2,3,4],
+				selectedTime:2,
+				stage:3
+			}
+		)
 	})
 })
 
