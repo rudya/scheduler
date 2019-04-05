@@ -120,9 +120,22 @@ body, html{
 #date-time{
   position: fixed;
   bottom: 0;
+  width: 100%;
 }
 
 #times{
   background-color: white;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+
+}
+
+.time{
+  background-color: #006edc;
+  width: auto;
+  padding: 0.36em;
+  margin: 0.36em;
+  color: white;
 }
 

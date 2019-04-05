@@ -59,9 +59,7 @@ class DateTime extends Component{
 	render(){
 
 		const times = this.props.times.map(time => 
-			
-			<li key={time} onClick={() => {this.selectTime(time)}}>{time}</li>
-			
+			<div className="time" key={time} onClick={() => {this.selectTime(time)}}>{time}</div>
 		)
 
 		let calendar = ""
