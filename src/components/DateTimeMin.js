@@ -22,12 +22,9 @@ class DateTimeMin extends Component{
 		anime({
 			targets:this.ref.current,
 			duration:500,
-			easing:'linear',
-			translateY:y,
-			direction:'reverse',
-			complete:()=>{
-				console.log('done')
-			}
+			easing:'easeInOutCirc',
+			opacity:[0,1],
+			
 		})
 			
 	}
