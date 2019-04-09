@@ -113,8 +113,14 @@ body, html{
 }
 
 #date-time-min{
-  padding: 7%;
   cursor: pointer;
+  width: 85%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 0.6rem;
+  background-color: white;
+  margin-top: 1.6rem;
 }
 
 #date-time{
@@ -138,5 +144,34 @@ body, html{
   padding: 0.36em;
   margin: 0.36em;
   color: white;
+}
+
+#scheduler-form{
+  width: 100%;
+  background-color: white;
+  margin-top: 1.6rem;
+}
+
+.input{
+  width: 85%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 0.6rem; 
+}
+
+#scheduler-form input{
+  border: none;
+  margin:1rem 0 0 0;
+
+}
+
+#scheduler-form button{
+  width: 100%;
+  background-color: #006edc;
+  color:white;
+  border:none;
+  margin-top: 1rem;
+  padding: 0.6em;
 }
 

@@ -41,17 +41,16 @@ class SchedulerForm extends Component{
 	render(){
 		let inputs = this.props.inputs.map((input) => {
 			return(
-				<div key={input}>
-					<p>{input}</p>
-					<input type="input" name={input} onChange={this.handleChange}></input>
+				<div className="input" key={input}>
+					<input type="input" className="med blue" name={input} onChange={this.handleChange} placeholder={input}></input>
 				</div>
 			)
 		})
 
 		return(
-			<div>
+			<div id="scheduler-form">
 				{inputs}
-				<button onClick={this.handleSubmit}> Submit </button>
+				<button className = "med" onClick={this.handleSubmit}> Submit </button>
 			</div>
 		)
 	}

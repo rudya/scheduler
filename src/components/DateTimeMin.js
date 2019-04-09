@@ -36,7 +36,7 @@ class DateTimeMin extends Component{
 
 	render(){
 		return(
-			<div id="date-time-min" className="blue med min" ref={this.ref} onClick={this.unminify}>
+			<div id="date-time-min" className="blue med min shadow" ref={this.ref} onClick={this.unminify}>
 				{this.props.date} @ {this.props.selectedTime}
 				<img className="back-img" src={next} alt="back"></img>
 			</div>
